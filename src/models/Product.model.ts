@@ -9,7 +9,7 @@ class Product extends Model {
   })
   declare name: string;
   @Column({
-    type: DataType.FLOAT(6, 2),
+    type: DataType.FLOAT
   })
   declare price: number;
   @Default(true)

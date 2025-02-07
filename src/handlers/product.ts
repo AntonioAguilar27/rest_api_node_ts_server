@@ -19,7 +19,7 @@ export const getProductById = async (req: Request, res: Response) =>{
         const {id} = req.params
         const product = await Product.findByPk(id)
         if(!product){
-            return res.status(400).json({
+            return res.status(404).json({
                 error: 'producto no encontrado'
             })
         }
@@ -33,7 +33,7 @@ export const getProductById = async (req: Request, res: Response) =>{
 export const createProduct = async (req: Request, res: Response) => {
   try {
     const product = await Product.create(req.body);
-    res.json({ data: product });
+    res.status(201).json({ data: product });
   } catch (error) {
     console.log(error);
   }
@@ -44,7 +44,7 @@ export const updateProduct = async (req: Request, res: Response) =>{
     const {id} = req.params
     const product = await Product.findByPk(id)
     if(!product){
-        return res.status(400).json({
+        return res.status(404).json({
             error: 'producto no encontrado'
         })
     }
@@ -60,7 +60,7 @@ export const updateAviability = async (req: Request, res: Response) =>{
     const {id} = req.params
     const product = await Product.findByPk(id)
     if(!product){
-        return res.status(400).json({
+        return res.status(404).json({
             error: 'producto no encontrado'
         })
     }
@@ -75,7 +75,7 @@ export const deleteProduct = async (req: Request, res: Response) =>{
     const {id} = req.params
     const product = await Product.findByPk(id)
     if(!product){
-        return res.status(400).json({
+        return res.status(404).json({
             error: 'producto no encontrado'
         })
     }
